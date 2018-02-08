@@ -1,0 +1,7 @@
+{
+  "extends": "default",
+  "rules": {
+    "func-order": false,
+    "indent": ["warn", 2]
+  }
+}

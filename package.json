@@ -1,0 +1,67 @@
+{
+    "name": "truegame-contracts",
+    "version": "0.0.1",
+    "private": false,
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/truegame/truegame-contracts.git"
+    },
+    "keywords": [
+        "Solidity",
+        "Ethereum",
+        "TypeScript",
+        "web3",
+        "dapp"
+    ],
+    "author": "truegame",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/truegame/truegame-contracts/issues"
+    },
+    "homepage": "https://github.com/truegame/truegame-contracts#readme",
+    "devDependencies": {
+        "@types/jest": "^21.1.8",
+        "@types/node": "^8.0.56",
+        "@types/underscore": "^1.8.5",
+        "copyfiles": "^1.2.0",
+        "ganache-cli": "^6.0.3",
+        "jest": "^21.2.1",
+        "ts-jest": "^21.2.4",
+        "tslint": "^5.8.0",
+        "typescript": "^2.6.2"
+    },
+    "dependencies": {
+        "bignumber.js": "^4.0.4",
+        "soltsice": "^0.10.2",
+        "zeppelin-solidity": "1.6.0"
+    },
+    "peerDependencies": {
+        "bignumber.js": "^4.0.4",
+        "soltsice": "^0.10.2"
+    },
+    "scripts": {
+        "test": "jest --watch",
+        "build:contracts": "truffle compile --all",
+        "soltsice": "copyfiles -u 2 build/contracts/**/* src/artifacts && soltsice ./src/artifacts ./src/contracts && tsc",
+        "dist": "npm run soltsice && tsc && copyfiles -u 2 src/artifacts/**/* dist/artifacts",
+        "prepublishOnly": "npm run dist",
+        "travis": "npm run build:contracts && npm run soltsice && jest"
+    },
+    "jest": {
+        "transform": {
+            "^.+\\.tsx?$": "ts-jest"
+        },
+        "testMatch": [
+            "<rootDir>/src/tests/**/?(*.)(spec|test).ts?(x)"
+        ],
+        "moduleFileExtensions": [
+            "ts",
+            "tsx",
+            "js",
+            "jsx",
+            "json"
+        ]
+    }
+}

@@ -1,0 +1,42 @@
+{
+    "compilerOptions": {
+        "outDir": "dist",
+        "target": "es5",
+        "declaration": true,
+        "lib": [
+            "es6",
+            "dom"
+        ],
+        "sourceMap": true,
+        "allowJs": false,
+        "jsx": "react",
+        "moduleResolution": "node",
+        "rootDir": "src",
+        "forceConsistentCasingInFileNames": true,
+        "noImplicitReturns": true,
+        "noImplicitThis": true,
+        "noImplicitAny": false,
+        "strictNullChecks": true,
+        "suppressImplicitAnyIndexErrors": true,
+        "noUnusedLocals": true,
+        "experimentalDecorators": true,
+        "noEmit": false,
+        "inlineSources": true
+    },
+    "exclude": [
+        "node_modules",
+        "build",
+        "scripts",
+        "acceptance-tests",
+        "webpack",
+        "jest",
+        "@types/jest",
+        "src/setupTests.ts",
+        "src/tests",
+        "migrations",
+        "dist",
+        "truffle-js",
+        "src/**/*.tsx",
+        "src/protocol.wrong"
+    ]
+}
