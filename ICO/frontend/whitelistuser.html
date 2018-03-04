@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+    <head>     
+      <title>Whitelist L-Pesa contributor</title>
+      <link href="material-dashboard.css" rel="stylesheet" />
+      <link href="bootstrap.min.css" rel="stylesheet" />
+      <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">      
+      <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+      <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons" />
+    </head>
+    <body><br>
+    <div style="margin: auto;
+      width: 50%;
+      border: 3px solid black;
+      padding: 10px;">
+ 
+
+     
+        <div>
+            <button id="whitelist" type="button">White List User</button><br>
+            <input type="text" id="white-list-address" size="40" placeholder="address of user to whitelist" value="0x6C88e6C76C1Eb3b130612D5686BE9c0A0C78925B"><br><br>           
+          
+            
+        </div>
+        <div>
+            <button id="is-whitelisted" type="button">Is User Whitelisted</button><br>
+            
+        </div>
+      </div>
+     <br>
+     
+   <!-- Modal progress box start -->
+  <div class="modal fade" id="progress" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content box-windwow">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Blockchain process</h4>
+          <span id="message-status-title"></span>
+        </div>  
+        <div class="modal-body">
+          <span  id="message-status-body"></span>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<!-- Modal progress box end -->
+
+</body>
+      
+      <script src="jquery.min.js" type="text/javascript"></script>           
+      <script src="front.js"></script>
+      <script src="interface.js"></script>      
+      <!-- web3 libraries -->
+      <script src="web3.js"></script>   
+      <!--  Notifications Plugin    -->
+      <script src="jquery.min.js" type="text/javascript"></script>
+      <script src="bootstrap.min.js" type="text/javascript"></script>
+      <script src="bootstrap-notify.js"></script>   
+      
+     
+
+      <script type="text/javascript">
+        function autorun() {
+          init();
+        }
+        if (document.addEventListener) document.addEventListener("DOMContentLoaded", autorun, false);
+        else if (document.attachEvent) document.attachEvent("onreadystatechange", autorun);
+        else window.onload = autorun;
+
+
+      </script>
+   
+</html>
