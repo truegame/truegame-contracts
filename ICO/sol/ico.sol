@@ -75,7 +75,6 @@ contract Pausable is Ownable {
 
 contract WhiteList is Ownable {
 
-    function addToWhiteList(address _user, address _affiliate) external returns (bool);
     function isWhiteListedAndAffiliate(address _user) external view returns (bool, address);
 }
 
@@ -92,11 +91,10 @@ contract Crowdsale is Pausable {
         bool refunded; // true if user has been refunded       
     }
 
-    
-
     Token public token; // Token contract reference   
     address public multisig; // Multisig contract that will receive the ETH    
-    address public team; // Address at which the team tokens will be sent        
+    address public team; // Address at which the team tokens will be sent   
+    uint public teamTokens; // tokens for the team.     
     uint public ethReceivedPresale; // Number of ETH received in presale
     uint public ethReceivedMain; // Number of ETH received in public sale
     uint public totalTokensSent; // Number of tokens sent to ETH contributors
@@ -115,6 +113,7 @@ contract Crowdsale is Pausable {
     uint public numOfBlocksInMinute;// number of blocks in one minute * 100. eg. 
     uint public claimCount;
     uint public totalClaimed;                   // Total number of tokens claimed
+    
 
     mapping(address => Backer) public backers; //backer list
     mapping(address => uint) public affiliates;
@@ -159,6 +158,7 @@ contract Crowdsale is Pausable {
         setStep(Step.FundingPreSale);
         numOfBlocksInMinute = 416;    
         whiteList = WhiteList(_whiteListAddress);    
+        teamTokens = 45000000e18;
     }
 
     // @notice to populate website with status of the sale 
@@ -372,14 +372,13 @@ contract Crowdsale is Pausable {
         // near the end 
         require(block.number >= endBlock || totalTokensSent >= maxCap.sub(1000));                 
         require(totalTokensSent >= minCap);  // ensure that minimum was reached
-        uint teamTokens = 45000000e18;
 
         crowdsaleClosed = true;  
         
         if (!token.transfer(team, teamTokens)) // transfer all remaing tokens to team address
             revert();
 
-        if (!token.burn(this, token.balanceOf(this) - teamTokens - totalTokensSent)) // burn tokens
+        if (!token.burn(this, maxCap - totalTokensSent)) // burn all unsold tokens
             revert();  
         token.unlock();                      
     }
