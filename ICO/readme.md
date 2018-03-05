@@ -27,7 +27,10 @@ This step can be done after ICO as tokens will be distributed after ICO is finis
 
 * when contract is deployed first, it is configured to act as a presale contract.  
 
-* to switch contract to public ICO mode call **setStep()** function and provide as argument "2", to set public ICO mode.  
+* to switch contract to public ICO mode call **setStep()** function and provide as argument **2**, to set public ICO mode.  
+
+* to enable claiming of the tokens through function **claimTokens()**, contract owner will have to set step of campaign to **Claiming**
+by calling **setSetep()** function and passing as an argument number **4** 
 
 * when the campaign is over, admin can run **finilize()** function to end the campaign and transfer unsold and dev tokens to individual wallet.  
 During finalize, token contract is unlocked and contributors can start trading tokens. 
@@ -37,6 +40,8 @@ During finalize, token contract is unlocked and contributors can start trading t
 * in  Crowdsale contract option to withdraw contributions is provided in case ICO was not successful. Minimum cap hasn't been reached.  
 
 * contributors can call function **refund()** to burn the tokens and return the money to  pull their contribution from the contract.  
+To enable refunding process contract owner will have to set step of campaign to **Refunding** by calling **setSetep()** function and passing as an argument number **3** 
+
 
 * in order for contributors to be able to get refunds, following conditions have to be met.  
 
