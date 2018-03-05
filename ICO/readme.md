@@ -21,7 +21,7 @@ This step can be done after ICO as tokens will be distributed after ICO is finis
 
 ### How do I run
 
-* owner can start the contract by calling **start()** function. Argument provided to the **start()** function is number of blocks. Average block time on main net is around 30 seconds as of this writing.  
+* owner can start the contract by calling **start()** function. Argument provided to the **start()** function is number of blocks. Average block time on main net is around 15 seconds as of this writing.  
 
 * contributions are accepted by sending ether to contract address 
 

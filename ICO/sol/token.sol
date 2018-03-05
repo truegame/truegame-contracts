@@ -101,11 +101,17 @@ contract Token is ERC20, Ownable {
         
         locked = true;  // Lock the Crowdsale function during the crowdsale
         totalSupply = 300000000e18; 
-        name = "Truegame"; // Set the name for display purposes
+        name = "TGAME"; // Set the name for display purposes
         symbol = "TGAME"; // Set the symbol for display purposes
         decimals = 18; // Amount of decimals for display purposes
         crowdSaleAddress = _crowdSaleAddress;                             
         balances[crowdSaleAddress] = totalSupply;
+    }
+
+
+    function updateCrowdsaleAddress(address _crowdSaleAddress) public onlyOwner() {
+
+        crowdSaleAddress = _crowdSaleAddress; 
     }
 
     function unlock() public onlyAuthorized {

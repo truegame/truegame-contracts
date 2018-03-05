@@ -109,16 +109,16 @@ contract Crowdsale is Pausable {
     uint public refundCount;  // number of refunds
     uint public totalRefunded; // total amount of refunds    
     uint public tokenPriceWei;  // price of token in wei
-    WhiteList whiteList;
+    WhiteList public whiteList; // white list address
     uint public numOfBlocksInMinute;// number of blocks in one minute * 100. eg. 
-    uint public claimCount;
-    uint public totalClaimed;                   // Total number of tokens claimed
+    uint public claimCount; // number of claims
+    uint public totalClaimed; // Total number of tokens claimed
     
 
     mapping(address => Backer) public backers; //backer list
-    mapping(address => uint) public affiliates;
+    mapping(address => uint) public affiliates; // affiliates list
     address[] public backersIndex; // to be able to itarate through backers for verification.  
-    mapping(address => uint) public claimed;    // Tokens claimed by contibutors
+    mapping(address => uint) public claimed;  // Tokens claimed by contibutors
 
     
     // @notice to verify if action is not performed out of the campaing range
@@ -147,8 +147,7 @@ contract Crowdsale is Pausable {
     // @notice fired when contract is crated. Initilizes all constnat and initial values.
     function Crowdsale(WhiteList _whiteListAddress) public {
         multisig = 0x49447Ea549CCfFDEF2E9a9290709d6114346df88; 
-        team = 0x49447Ea549CCfFDEF2E9a9290709d6114346df88;                                  
-        minInvestETH = 1 ether/100;
+        team = 0x49447Ea549CCfFDEF2E9a9290709d6114346df88;                                         
         startBlock = 0; // Should wait for the call of the function start
         endBlock = 0; // Should wait for the call of the function start                  
         tokenPriceWei = 108110000000000;
@@ -166,8 +165,6 @@ contract Crowdsale is Pausable {
     
         return (startBlock, endBlock, backersIndex.length, ethReceivedPresale.add(ethReceivedMain), maxCap, minCap, totalTokensSent, tokenPriceWei, currentStep, stopped, crowdsaleClosed);
     }
-
-
 
     // @notice Specify address of token contract
     // @param _tokenAddress {address} address of token contract
